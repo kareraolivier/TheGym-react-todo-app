@@ -9,23 +9,29 @@ const Home = () => {
   );
   const [todos, setTodos] = useState(initialTodos);
   const [formData, setFormData] = useState({ todo: "" });
-
-  const hundleChange = (event: { target: { name: string; value: string } }) => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const handleChange = (event: { target: { name: string; value: string } }) => {
     setFormData((previousFormData) => {
       return {
         ...previousFormData,
         [event.target.name]: event.target.value,
       };
     });
+    setIsButtonDisabled(event.target.value.trim() === "");
   };
 
   const createTodos = (): todoType => {
-    return { id: nanoid(), todo: formData.todo, isActive: true };
+    return {
+      id: nanoid(),
+      todo: formData.todo,
+      isActive: true,
+    };
   };
 
   const submitForm = () => {
     setTodos((previous: todoType[]) => [createTodos(), ...previous]);
     setFormData({ todo: "" });
+    setIsButtonDisabled(true);
   };
 
   const onDeleteDoto = (todoId: string) => {
@@ -52,9 +58,10 @@ const Home = () => {
       <div className="h-screen flex flex-col justify-center items-center w-full sm:w-1/2">
         <p className="font-bold text-green-500 sm:text-8xl text-3xl">Todos</p>
         <InputForm
-          hundleChange={hundleChange}
+          handleChange={handleChange}
           submitForm={submitForm}
           formData={formData.todo}
+          isButtonDisabled={isButtonDisabled}
         />
         <Todos
           todos={todos}

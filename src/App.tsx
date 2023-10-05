@@ -1,5 +1,4 @@
-/* eslint-disable unicorn/filename-case */
-import Home from "./page/home.jsx";
+import Home from "./page/home.js";
 
 function App() {
   return (

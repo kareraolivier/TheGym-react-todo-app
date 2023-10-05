@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export interface todoType {
   id: string;
   todo: string;
@@ -12,7 +11,8 @@ export interface todoPropertyType {
 }
 
 export interface todoInputType {
-  hundleChange: (event: { target: { name: string; value: string } }) => void;
+  handleChange: (event: { target: { name: string; value: string } }) => void;
   submitForm: () => void;
   formData: string;
+  isButtonDisabled: boolean;
 }

@@ -1,6 +1,11 @@
 import { SiAddthis } from "react-icons/si";
 import { todoInputType } from "./types/todo.type";
-const InputForm = ({ hundleChange, submitForm, formData }: todoInputType) => {
+const InputForm = ({
+  handleChange,
+  submitForm,
+  formData,
+  isButtonDisabled,
+}: todoInputType) => {
   return (
     <div className="w-full">
       <form>
@@ -9,11 +14,15 @@ const InputForm = ({ hundleChange, submitForm, formData }: todoInputType) => {
             type="text"
             name="todo"
             value={formData}
-            onChange={hundleChange}
+            onChange={handleChange}
             className="w-full outline-none text-xl text-gray-600 bg-gray-100"
             placeholder="Enter the todos"
           />
-          <button type="button" onClick={submitForm}>
+          <button
+            type="button"
+            onClick={submitForm}
+            disabled={isButtonDisabled}
+          >
             <SiAddthis className="text-3xl text-green-600 hover:shadow-lg" />
           </button>
         </div>
