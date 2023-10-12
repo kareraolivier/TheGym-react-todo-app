@@ -11,7 +11,7 @@ export interface todoPropertyType {
 }
 
 export interface todoInputType {
-  handleChange: (event: { target: { name: string; value: string } }) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   submitForm: () => void;
   formData: string;
   isButtonDisabled: boolean;

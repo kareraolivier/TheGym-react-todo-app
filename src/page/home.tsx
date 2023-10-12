@@ -10,7 +10,7 @@ const Home = () => {
   const [todos, setTodos] = useState(initialTodos);
   const [formData, setFormData] = useState({ todo: "" });
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const handleChange = (event: { target: { name: string; value: string } }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((previousFormData) => {
       return {
         ...previousFormData,
