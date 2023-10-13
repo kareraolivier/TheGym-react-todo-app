@@ -1,10 +1,10 @@
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { BsCheckSquare, BsCheckSquareFill } from "react-icons/bs";
-import { todoType, todoPropertyType } from "./types/todo.type";
-const Todos = ({ todos, onDeleteDoto, checkTodo }: todoPropertyType) => {
+import { Todo, Todoprop } from "./types/todo.type";
+const Todos = ({ todos, onDeleteTodo, checkTodo }: Todoprop) => {
   return (
     <div className="w-full">
-      {todos.map((todo: todoType) => (
+      {todos.map((todo: Todo) => (
         <div
           key={todo.id}
           className="flex justify-between items-center shadow-sm shadow-green-100 py-2 px-2"
@@ -26,7 +26,7 @@ const Todos = ({ todos, onDeleteDoto, checkTodo }: todoPropertyType) => {
             </p>
           </div>
 
-          <div onClick={() => onDeleteDoto(todo.id)} className="p-2 w-1/12 ">
+          <div onClick={() => onDeleteTodo(todo.id)} className="p-2 w-1/12 ">
             <RiDeleteBin7Line className="cursor-pointer text-3xl text-red-600" />
           </div>
         </div>

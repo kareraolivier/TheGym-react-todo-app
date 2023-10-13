@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import Todos from "../components/todos";
 import InputForm from "../components/input.form";
 import { nanoid } from "nanoid";
-import { todoType } from "../components/types/todo.type";
+import { Todo } from "../components/types/todo.type";
 const Home = () => {
-  const initialTodos: todoType[] = JSON.parse(
-    localStorage.getItem("todos") || "[]"
+  const [todos, setTodos] = useState<Todo[]>(
+    JSON.parse(localStorage.getItem("todos") || "[]")
   );
-  const [todos, setTodos] = useState(initialTodos);
   const [formData, setFormData] = useState({ todo: "" });
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +19,7 @@ const Home = () => {
     setIsButtonDisabled(event.target.value.trim() === "");
   };
 
-  const createTodos = (): todoType => {
+  const createTodos = (): Todo => {
     return {
       id: nanoid(),
       todo: formData.todo,
@@ -29,18 +28,16 @@ const Home = () => {
   };
 
   const submitForm = () => {
-    setTodos((previous: todoType[]) => [createTodos(), ...previous]);
+    setTodos((previous) => [createTodos(), ...previous]);
     setFormData({ todo: "" });
     setIsButtonDisabled(true);
   };
 
-  const onDeleteDoto = (todoId: string) => {
-    setTodos((previous: todoType[]) =>
-      previous.filter((element) => element.id !== todoId)
-    );
+  const onDeleteTodo = (todoId: string) => {
+    setTodos((previous) => previous.filter((element) => element.id !== todoId));
   };
   const checkTodo = (todoId: string) => {
-    setTodos((previous: todoType[]) =>
+    setTodos((previous) =>
       previous.map((element) =>
         element.id === todoId
           ? { ...element, isActive: !element.isActive }
@@ -65,7 +62,7 @@ const Home = () => {
         />
         <Todos
           todos={todos}
-          onDeleteDoto={onDeleteDoto}
+          onDeleteTodo={onDeleteTodo}
           checkTodo={checkTodo}
         />
       </div>
