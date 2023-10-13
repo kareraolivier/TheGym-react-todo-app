@@ -1,10 +1,11 @@
-/* eslint-disable unicorn/filename-case */
+import Home from "./page/home";
+
 function App() {
   return (
     <>
-      <p className="font-bold text-green-500">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="flex justify-center items-center">
+        <Home />
+      </div>
     </>
   );
 }

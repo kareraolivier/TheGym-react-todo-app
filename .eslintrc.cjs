@@ -15,5 +15,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "no-unused-vars": "warn",
+    "unicorn/filename-case": "off",
   },
 };
