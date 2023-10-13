@@ -1,11 +1,11 @@
 import { SiAddthis } from "react-icons/si";
-import { todoInputType } from "./types/todo.type";
+import { Inputprop } from "./types/todo.type";
 const InputForm = ({
   handleChange,
   submitForm,
   formData,
   isButtonDisabled,
-}: todoInputType) => {
+}: Inputprop) => {
   return (
     <div className="w-full">
       <form>
